@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const projects = [
   {
@@ -10,8 +11,7 @@ const projects = [
       "https://cdn.dribbble.com/userupload/40060965/file/original-728ef7f2f551271a4d1a743161e5b482.jpg?resize=800x",
     width: 800,
     height: 626,
-    link: "#",
-  }, 
+  },
   {
     category: "WEBSITE COMPANY PROFILE",
     name: "Gema Ekstra Logistics",
@@ -21,17 +21,12 @@ const projects = [
       "https://cdn.dribbble.com/userupload/43510575/file/original-4fae73f92a645a1558274c0779e1d973.png?resize=752x",
     width: 752,
     height: 564,
-    link: "#",
   },
 ];
 
 function ProjectCard({ project }) {
   return (
-    <a
-      href={project.link}
-      aria-label={`Lihat detail proyek ${project.name}`}
-      className="group block overflow-hidden rounded-[22px] border border-slate-200/80 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-900/5"
-    >
+    <article className="group block overflow-hidden rounded-[22px] border border-slate-200/80 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-900/5">
       <div className="relative aspect-[1.55/1] overflow-hidden bg-slate-100">
         <img
           src={project.image}
@@ -50,6 +45,7 @@ function ProjectCard({ project }) {
             <p className="mb-3 text-xs font-bold tracking-[0.18em] text-sky-300">
               {project.category}
             </p>
+
             <h3 className="text-xl font-bold tracking-tight text-white md:text-2xl">
               {project.name}
             </h3>
@@ -66,7 +62,7 @@ function ProjectCard({ project }) {
           {project.description}
         </p>
       </div>
-    </a>
+    </article>
   );
 }
 
@@ -96,6 +92,19 @@ export default function Projects() {
           {projects.map((project) => (
             <ProjectCard key={project.name} project={project} />
           ))}
+        </div>
+
+        <div className="mt-14 flex justify-center">
+          <Link
+            to="/portfolio"
+            className="group inline-flex items-center gap-3 rounded-full border border-blue-600 px-8 py-4 text-sm font-semibold text-blue-600 transition-all duration-300 hover:bg-blue-600 hover:text-white"
+          >
+            Lihat Semua Portfolio
+            <ArrowUpRight
+              size={18}
+              className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+            />
+          </Link>
         </div>
       </div>
     </section>
