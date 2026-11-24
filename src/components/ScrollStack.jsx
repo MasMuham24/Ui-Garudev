@@ -1,6 +1,6 @@
 'use client';
 
-import { Children, Fragment, isValidElement, useLayoutEffect, useRef } from 'react';
+import { Children, Fragment, isValidElement, useEffect, useRef } from 'react';
 import './ScrollStack.css';
 
 const resolveOffset = (value, size) => {
@@ -56,7 +56,7 @@ const ScrollStack = ({
   const scheduleRef = useRef(null);
   const items = Children.toArray(children);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     settingsRef.current = {
       itemDistance,
       itemStackDistance,
@@ -75,7 +75,7 @@ const ScrollStack = ({
     scheduleRef.current?.();
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const root = rootRef.current;
     const inner = innerRef.current;
     const end = endRef.current;
@@ -125,6 +125,7 @@ const ScrollStack = ({
       const offset = settings.itemStackDistance;
       const heights = slots.map(slot => slot.offsetHeight);
       const tops = slots.map(slot => slot.getBoundingClientRect().top);
+      const innerTop = inner.getBoundingClientRect().top;
       const lastPin = stackTop + (slots.length - 1) * offset;
       const padTop = windowed ? 0 : stackTop;
       const endHeight =
@@ -138,7 +139,7 @@ const ScrollStack = ({
           end.style.height = `${value}px`;
         }) || moved;
 
-      let flow = inner.getBoundingClientRect().top - viewTop + readScroll() + padTop;
+      let flow = innerTop - viewTop + readScroll() + padTop;
       points = heights.map((height, i) => {
         const point = flow - stackTop - i * offset;
         flow += height + settings.itemDistance;

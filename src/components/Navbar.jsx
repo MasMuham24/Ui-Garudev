@@ -29,7 +29,7 @@ export default function Navbar() {
             : "border-gray-200/60 bg-white/75 shadow-sm backdrop-blur-md"
         }`}
       >
-        <a href="#" className="flex items-center gap-3">
+        <a href="#home" aria-label="GaruDev Beranda" className="flex items-center gap-3">
           <div className="relative flex h-7 w-7 items-center">
             <span className="absolute left-0 h-5 w-5 rounded-full bg-blue-300" />
             <span className="absolute right-0 h-5 w-5 rounded-full bg-blue-600" />
@@ -63,7 +63,7 @@ export default function Navbar() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="rounded-full border border-gray-200 p-2 transition-colors hover:bg-gray-100 md:hidden"
-          aria-label="Buka navigasi"
+          aria-label={isOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
           aria-expanded={isOpen}
         >
           {isOpen ? <X size={19} /> : <Menu size={19} />}

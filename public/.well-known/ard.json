@@ -1,0 +1,30 @@
+{
+  "name": "GaruDev",
+  "description": "Studio Agensi Digital Kreatif",
+  "version": "1.0.0",
+  "entries": [
+    {
+      "identifier": "urn:air:garudev.com:web:site",
+      "displayName": "GaruDev Website",
+      "type": "text/html",
+      "url": "https://garudev.com/",
+      "description": "Website resmi studio digital agency GaruDev di Semarang",
+      "representativeQueries": [
+        "jasa pembuatan website semarang",
+        "agensi digital indonesia",
+        "pengembangan sistem informasi garudev"
+      ]
+    },
+    {
+      "identifier": "urn:air:garudev.com:doc:llms",
+      "displayName": "GaruDev LLMs Documentation",
+      "type": "text/markdown",
+      "url": "https://garudev.com/llms.txt",
+      "description": "Dokumentasi struktur dan layanan GaruDev untuk agen AI",
+      "representativeQueries": [
+        "garudev llms documentation",
+        "informasi layanan garudev"
+      ]
+    }
+  ]
+}

@@ -6,7 +6,8 @@ export default function LazySection({
   children,
   className = "",
   delay = 0,
-  threshold = 0.1,
+  threshold = 0.05,
+  minHeight = "200px",
   ...props
 }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -25,7 +26,7 @@ export default function LazySection({
       },
       {
         threshold,
-        rootMargin: "0px 0px -40px 0px",
+        rootMargin: "300px 0px",
       }
     );
 
@@ -42,12 +43,15 @@ export default function LazySection({
       className={`transition-all duration-700 ease-out will-change-[opacity,transform] ${
         isVisible
           ? "opacity-100 translate-y-0 filter-none"
-          : "opacity-0 translate-y-12 blur-[1px]"
+          : "opacity-0 translate-y-8 blur-[1px]"
       } ${className}`.trim()}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={{
+        transitionDelay: `${delay}ms`,
+        minHeight: !isVisible ? minHeight : undefined,
+      }}
       {...props}
     >
-      {children}
+      {isVisible ? children : null}
     </div>
   );
 }

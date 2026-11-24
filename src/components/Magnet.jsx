@@ -21,6 +21,14 @@ const reach = (rect, pointer) => {
 };
 
 const arbitrate = () => {
+  if (!field.pointer) {
+    if (field.owner) {
+      const prev = field.owner;
+      field.owner = null;
+      prev.wake();
+    }
+    return;
+  }
   let winner = null;
   let nearest = Infinity;
   let closest = Infinity;
@@ -50,6 +58,9 @@ const arbitrate = () => {
 };
 
 const attach = () => {
+  if (typeof window !== 'undefined' && window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+    return () => {};
+  }
   const onPointerMove = event => {
     if (event.pointerType === 'touch') return;
     field.pointer = { x: event.clientX, y: event.clientY };

@@ -158,7 +158,7 @@ const TiltedCard = ({
     let focused = false;
     let raf = 0;
     let last = 0;
-    let visible = true;
+    let visible = false;
 
     if (settingsRef.current.intro && !reduced) {
       entered = false;
@@ -421,9 +421,13 @@ const TiltedCard = ({
     figure.addEventListener('blur', onBlur);
     window.addEventListener('pointerup', onUp, { passive: true });
     window.addEventListener('pointercancel', onCancel, { passive: true });
-    window.addEventListener('pointermove', onWindowMove, { passive: true });
+    if (settingsRef.current.trackWindow) {
+      window.addEventListener('pointermove', onWindowMove, { passive: true });
+    }
     document.documentElement.addEventListener('pointerleave', onWindowLeave);
-    window.addEventListener('deviceorientation', onOrientation);
+    if (settingsRef.current.gyroscope && typeof window !== 'undefined' && window.isSecureContext) {
+      window.addEventListener('deviceorientation', onOrientation);
+    }
 
     const observer = new IntersectionObserver(entries => {
       visible = entries.some(entry => entry.isIntersecting);
@@ -447,9 +451,13 @@ const TiltedCard = ({
       figure.removeEventListener('blur', onBlur);
       window.removeEventListener('pointerup', onUp);
       window.removeEventListener('pointercancel', onCancel);
-      window.removeEventListener('pointermove', onWindowMove);
+      if (settingsRef.current.trackWindow) {
+        window.removeEventListener('pointermove', onWindowMove);
+      }
       document.documentElement.removeEventListener('pointerleave', onWindowLeave);
-      window.removeEventListener('deviceorientation', onOrientation);
+      if (settingsRef.current.gyroscope && typeof window !== 'undefined' && window.isSecureContext) {
+        window.removeEventListener('deviceorientation', onOrientation);
+      }
     };
   }, []);
 

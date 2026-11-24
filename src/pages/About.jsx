@@ -31,10 +31,10 @@ export default function About() {
                 TENTANG GARUDEV
               </div>
 
-              <h1 className="mt-10 max-w-5xl text-4xl font-bold leading-[1.12] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
+              <h2 className="mt-10 max-w-5xl text-4xl font-bold leading-[1.12] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
                 Kami percaya pada kekuatan{" "}
                 <span className="text-blue-600">ide digital.</span>
-              </h1>
+              </h2>
 
               <div className="mt-12 flex flex-col justify-between gap-8 border-t border-gray-200 pt-8 md:flex-row md:items-end">
                 <p className="max-w-xl text-base leading-8 text-gray-500 md:text-lg">

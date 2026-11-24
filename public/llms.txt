@@ -1,0 +1,22 @@
+# GaruDev
+
+> Studio Agensi Digital Kreatif: Jasa pembuatan website, aplikasi mobile, dan sistem informasi bisnis modern di Indonesia.
+
+## Layanan Utama
+- [Pengembangan Website](/#services): Pembuatan website company profile, landing page pemasaran, dan katalog digital kustom.
+- [Pengembangan Aplikasi Mobile](/#services): Pembuatan aplikasi Android dan iOS responsif, cepat, dan skalabel.
+- [Sistem Informasi Bisnis](/#services): Dashboard manajemen operasional, integrasi database, dan otomatisasi alur kerja.
+
+## Informasi & Navigasi
+- [Tentang GaruDev](/#about): Visi, misi, dan nilai-nilai inti kami.
+- [Mengapa Memilih Kami](/#why-us): Keunggulan kode bersih, performa optimal, dan dukungan purna jual.
+- [Alur Kerja](/#services): Proses 6 tahap mulai dari konsultasi, brief, pengerjaan hingga serah terima.
+- [Portofolio Proyek](/#projects): Karya nyata solusi digital bagi mitra bisnis.
+- [Ulasan Mitra](/#reviews): Testimoni mitra yang telah bertransformasi digital bersama kami.
+- [Pusat Bantuan & FAQ](/#faq): Pertanyaan umum seputar layanan dan lisensi kode sumber.
+- [Kontak & Konsultasi](/#contact): Konsultasi gratis via WhatsApp dan email resmi.
+
+## Kontak Resmi
+- Email: [garudev@gmail.com](mailto:garudev@gmail.com)
+- Lokasi: Semarang, Indonesia
+- Website: [GaruDev](/)

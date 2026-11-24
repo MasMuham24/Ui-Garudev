@@ -4,7 +4,7 @@ import Magnet from "../components/Magnet";
 
 export default function Hero() {
   return (
-    <section className="mx-auto max-w-[1440px] px-6 pb-12 pt-44 md:px-12 md:pt-48 lg:px-16 lg:pt-48">
+    <section id="home" className="mx-auto max-w-[1440px] px-6 pb-12 pt-44 md:px-12 md:pt-48 lg:px-16 lg:pt-48">
       {/* Hero Intro */}
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
         <div className="lg:col-span-8">
@@ -90,7 +90,7 @@ export default function Hero() {
           <div className="relative z-10">
             <h3 className="text-5xl font-semibold tracking-tight">200+</h3>
 
-            <p className="mt-2 text-[11px] text-white/80">
+            <p className="mt-2 text-[11px] font-medium text-white">
               Proyek selesai dan sukses diluncurkan
             </p>
           </div>
@@ -104,9 +104,11 @@ export default function Hero() {
               ].map((photo) => (
                 <img
                   key={photo}
-                  src={`https://images.unsplash.com/${photo}?auto=format&fit=crop&w=100&q=80`}
-                  alt="Klien"
-                  loading="lazy"
+                  src={`https://images.unsplash.com/${photo}?auto=format&fit=crop&w=80&h=80&q=80`}
+                  alt="Klien GaruDev"
+                  width={40}
+                  height={40}
+                  loading="eager"
                   decoding="async"
                   className="h-10 w-10 rounded-full border-2 border-white object-cover"
                 />
@@ -120,9 +122,12 @@ export default function Hero() {
         {/* Image Showcase */}
         <div className="group relative min-h-[270px] overflow-hidden rounded-2xl md:col-span-8 lg:min-h-[310px]">
           <img
-            src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=85"
-            alt="Tim kreatif berkolaborasi"
-            loading="lazy"
+            src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&h=600&q=80"
+            alt="Tim kreatif GaruDev berkolaborasi mengembangkan solusi digital"
+            width={1200}
+            height={600}
+            loading="eager"
+            fetchPriority="high"
             decoding="async"
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
           />

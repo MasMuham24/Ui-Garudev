@@ -54,7 +54,7 @@ export default function WhyChooseUs() {
             </div>
             <div>
               <div className="text-[12px] font-bold text-gray-900">Kode Bersih</div>
-              <div className="text-[10px] font-medium text-gray-400">Arsitektur Modern</div>
+              <div className="text-[10px] font-medium text-gray-500">Arsitektur Modern</div>
             </div>
           </div>
 
@@ -65,7 +65,7 @@ export default function WhyChooseUs() {
             </div>
             <div>
               <div className="text-[12px] font-bold text-gray-900">Performa Cepat</div>
-              <div className="text-[10px] font-medium text-gray-400">Kinerja Tinggi</div>
+              <div className="text-[10px] font-medium text-gray-500">Kinerja Tinggi</div>
             </div>
           </div>
 
@@ -104,13 +104,18 @@ export default function WhyChooseUs() {
 
             {/* Parallax Layer: Mascot Image - kept large & filling the circle with feet covered */}
             <TiltedCardLayer depth={28} className="flex items-end justify-center">
-              <img
-                src="/images/mascot.png"
-                alt="Maskot Garudev"
-                loading="lazy"
-                decoding="async"
-                className="relative z-10 h-auto w-[114%] sm:w-[110%] md:w-[106%] max-w-none object-contain translate-y-7 sm:translate-y-9 md:translate-y-11 pointer-events-none"
-              />
+              <picture>
+                <source srcSet="/images/mascot.webp" type="image/webp" />
+                <img
+                  src="/images/mascot.png"
+                  alt="Maskot GaruDev merepresentasikan solusi digital cerdas dan handal"
+                  width={490}
+                  height={490}
+                  loading="lazy"
+                  decoding="async"
+                  className="relative z-10 h-auto w-[114%] sm:w-[110%] md:w-[106%] max-w-none object-contain translate-y-7 sm:translate-y-9 md:translate-y-11 pointer-events-none"
+                />
+              </picture>
             </TiltedCardLayer>
           </TiltedCard>
         </div>
