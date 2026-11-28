@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
   { label: "TENTANG", href: "#about" },
-  { label: "LAYANAN", href: "#services" },
+  { label: "LAYANAN", href: "/layanan", isRoute: true },
   { label: "PORTFOLIO", href: "/portfolio", isRoute: true },
   { label: "ULASAN", href: "#reviews" },
 ];
@@ -64,10 +64,19 @@ export default function Navbar() {
                 key={link.label}
                 to={link.href}
                 className={`text-[11px] font-medium tracking-wide transition-colors duration-300 hover:text-blue-600 ${
-                  location.pathname === "/portfolio"
+                  location.pathname === link.href ||
+                  (link.href === "/layanan" &&
+                    location.pathname.startsWith("/layanan"))
                     ? "text-blue-600"
                     : "text-gray-700"
                 }`}
+                aria-current={
+                  location.pathname === link.href ||
+                  (link.href === "/layanan" &&
+                    location.pathname.startsWith("/layanan"))
+                    ? "page"
+                    : undefined
+                }
               >
                 {link.label}
               </Link>
@@ -108,10 +117,19 @@ export default function Navbar() {
                   to={link.href}
                   onClick={() => setIsOpen(false)}
                   className={`text-xs font-medium tracking-wide transition-colors hover:text-blue-600 ${
-                    location.pathname === "/portfolio"
+                    location.pathname === link.href ||
+                    (link.href === "/layanan" &&
+                      location.pathname.startsWith("/layanan"))
                       ? "text-blue-600"
                       : "text-gray-700"
                   }`}
+                  aria-current={
+                    location.pathname === link.href ||
+                    (link.href === "/layanan" &&
+                      location.pathname.startsWith("/layanan"))
+                      ? "page"
+                      : undefined
+                  }
                 >
                   {link.label}
                 </Link>
