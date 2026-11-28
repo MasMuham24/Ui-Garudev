@@ -7,7 +7,7 @@
  * SITE_URL: ganti dengan domain produksi bila sudah live.
  */
 
-export const SITE_URL = "https://garudev.web.id";
+export const SITE_URL = "https://www.garudev.web.id";
 export const SITE_NAME = "GaruDev";
 export const SITE_LOCALE = "id_ID";
 
