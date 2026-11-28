@@ -20,7 +20,7 @@ export default function CTA() {
 
         <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
-            href="#"
+            href="https://wa.me/6283822757990?text=Hai%20Garudev%2C%20aku%20mau%20konsultasi%20soal%20website%20nih"
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex min-h-[62px] w-full items-center justify-center gap-3 rounded-full bg-blue-600 px-9 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/25 sm:w-auto"

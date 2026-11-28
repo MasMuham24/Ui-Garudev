@@ -1,49 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- TODO: Ganti base URL dengan domain produksi aktual -->
   <url>
-    <loc>https://garudev.id/</loc>
-    <changefreq>monthly</changefreq>
+    <loc>https://garudev.web.id/</loc>
+    <lastmod>2026-11-28</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://garudev.id/layanan</loc>
+    <loc>https://garudev.web.id/layanan</loc>
+    <lastmod>2026-11-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://garudev.id/layanan/pembuatan-website</loc>
+    <loc>https://garudev.web.id/jasa-website-demak</loc>
+    <lastmod>2026-11-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://garudev.id/layanan/aplikasi-web</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://garudev.id/layanan/aplikasi-mobile</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://garudev.id/layanan/sistem-informasi</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://garudev.id/layanan/ui-ux-design</loc>
+    <loc>https://garudev.web.id/portfolio</loc>
+    <lastmod>2026-11-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://garudev.id/layanan/seo-maintenance</loc>
+    <loc>https://garudev.web.id/layanan/pembuatan-website</loc>
+    <lastmod>2026-11-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://garudev.id/portfolio</loc>
+    <loc>https://garudev.web.id/layanan/aplikasi-web</loc>
+    <lastmod>2026-11-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://garudev.web.id/layanan/aplikasi-mobile</loc>
+    <lastmod>2026-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://garudev.web.id/layanan/sistem-informasi-bisnis</loc>
+    <lastmod>2026-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://garudev.web.id/layanan/ui-ux-design</loc>
+    <lastmod>2026-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://garudev.web.id/layanan/seo-maintenance</loc>
+    <lastmod>2026-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

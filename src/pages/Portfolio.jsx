@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
+import { useSEO, useJsonLd } from "../utils/useSEO";
+import { STATIC_ROUTES_SEO } from "../utils/seoConfig";
 
 const categories = ["Semua", "Website", "Web App", "UI/UX"];
 
@@ -55,6 +57,9 @@ const projects = [
 
 function Portfolio() {
   const [activeCategory, setActiveCategory] = useState("Semua");
+  const seo = STATIC_ROUTES_SEO["/portfolio"];
+  useSEO(seo);
+  useJsonLd("ld-portfolio-breadcrumb", seo.jsonLd[0].data);
 
   const filteredProjects =
     activeCategory === "Semua"
@@ -120,8 +125,11 @@ function Portfolio() {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-100">
                   <img
                     src={project.image}
-                    alt={project.title}
+                    alt={`Preview proyek ${project.title} — ${project.category}`}
+                    width={800}
+                    height={600}
                     loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
 

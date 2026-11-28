@@ -1,20 +1,4 @@
-/**
- * Halaman detail /layanan/:slug (Bagian 2)
- *
- * Menampilkan:
- * - Deskripsi lengkap layanan
- * - Fitur + deliverables
- * - Tech stack
- * - Alur kerja layanan spesifik
- * - Estimasi durasi
- * - FAQ per layanan
- * - CTA ke kontak
- * - 404 bila slug tidak ditemukan
- *
- * SEO: title + meta description + OG per slug di-set via useEffect.
- */
-
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
   ArrowLeft,
@@ -29,32 +13,8 @@ import {
 } from "lucide-react";
 import { getServiceBySlug } from "../data/services";
 import ServiceIcon from "../components/ServiceIcon";
-
-// ─── SEO Hook ──────────────────────────────────────────────────────────────────
-function useSEO({ title, description, ogTitle, ogDescription }) {
-  useEffect(() => {
-    document.title = title;
-
-    const setMeta = (name, content, attr = "name") => {
-      let el = document.querySelector(`meta[${attr}="${name}"]`);
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-
-    setMeta("description", description);
-    setMeta("og:title", ogTitle ?? title, "property");
-    setMeta("og:description", ogDescription ?? description, "property");
-    setMeta("og:type", "website", "property");
-
-    return () => {
-      document.title = "GaruDev — Jasa Pembuatan Website & Aplikasi";
-    };
-  }, [title, description, ogTitle, ogDescription]);
-}
+import { useSEO, useJsonLd } from "../utils/useSEO";
+import { getServiceSEO } from "../utils/seoConfig";
 
 // ─── FAQ Item ──────────────────────────────────────────────────────────────────
 function FAQItem({ question, answer, index }) {
@@ -111,8 +71,11 @@ function FAQItem({ question, answer, index }) {
 // ─── 404 ───────────────────────────────────────────────────────────────────────
 function ServiceNotFound() {
   useSEO({
-    title: "Layanan Tidak Ditemukan — GaruDev",
-    description: "Halaman layanan yang Anda cari tidak tersedia. Kembali ke daftar semua layanan GaruDev.",
+    title: "Layanan Tidak Ditemukan (404) — GaruDev Digital",
+    description:
+      "Halaman layanan yang Anda cari tidak tersedia. Kembali ke daftar semua layanan GaruDev.",
+    path: "/layanan/not-found",
+    robots: "noindex, nofollow",
   });
 
   return (
@@ -153,20 +116,20 @@ function ServiceNotFound() {
 export default function LayananDetailPage() {
   const { slug } = useParams();
   const service = getServiceBySlug(slug);
+  const seo = service
+    ? getServiceSEO(service)
+    : {
+        title: "Layanan Tidak Ditemukan (404) — GaruDev Digital",
+        description: "Halaman layanan ini tidak tersedia.",
+        path: `/layanan/${slug || "not-found"}`,
+        robots: "noindex, nofollow",
+        jsonLd: [],
+      };
 
-  useSEO(
-    service
-      ? {
-          title: `${service.title} — GaruDev`,
-          description: service.shortDescription,
-          ogTitle: `${service.title} | Layanan GaruDev`,
-          ogDescription: service.shortDescription,
-        }
-      : {
-          title: "Layanan Tidak Ditemukan — GaruDev",
-          description: "Halaman layanan ini tidak tersedia.",
-        }
-  );
+  useSEO(seo);
+  useJsonLd("ld-service", seo.jsonLd[0]?.data || null);
+  useJsonLd("ld-breadcrumb", seo.jsonLd[1]?.data || null);
+  useJsonLd("ld-service-faq", seo.jsonLd[2]?.data || null);
 
   if (!service) return <ServiceNotFound />;
 
@@ -257,9 +220,8 @@ export default function LayananDetailPage() {
               )}
 
               <div className="mt-6 flex flex-col gap-3">
-                {/* TODO: Ganti href dengan nomor WhatsApp aktual */}
                 <a
-                  href={`https://wa.me/6281234567890?text=Halo%20GaruDev%2C%20saya%20tertarik%20dengan%20layanan%20${encodeURIComponent(service.title)}`}
+                  href={`https://wa.me/6283822757990?text=${encodeURIComponent(`Hai Garudev, aku mau konsultasi soal layanan ${service.title} nih`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex min-h-[52px] items-center justify-center gap-3 rounded-full bg-blue-600 px-6 text-sm font-bold text-white shadow-md shadow-blue-600/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/25"
@@ -444,9 +406,8 @@ export default function LayananDetailPage() {
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            {/* TODO: Ganti dengan nomor WhatsApp aktual */}
             <a
-              href={`https://wa.me/6281234567890?text=Halo%20GaruDev%2C%20saya%20ingin%20konsultasi%20tentang%20${encodeURIComponent(service.title)}`}
+              href={`https://wa.me/6283822757990?text=${encodeURIComponent(`Hai Garudev, aku mau konsultasi soal layanan ${service.title} nih`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex min-h-[56px] w-full items-center justify-center gap-3 rounded-full bg-white px-8 text-sm font-bold text-blue-600 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:w-auto"

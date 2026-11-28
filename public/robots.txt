@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://garudev.web.id/sitemap.xml

@@ -1,20 +1,4 @@
-/**
- * Halaman /layanan (Bagian 2)
- *
- * Menampilkan:
- * - Hero singkat + judul + deskripsi
- * - Filter kategori (bila layanan > 6)
- * - Grid semua layanan
- * - Section "Alur Pengerjaan"
- * - FAQ ringkas
- * - CTA ke kontak/WhatsApp
- *
- * SEO: title + meta description + OG per halaman di-set via <title> tag
- * (tanpa library tambahan; Vite SPA menggunakan index.html statis, jadi
- *  meta dinamis di-set via document.title + meta-tag manipulation di useEffect).
- */
-
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowUpRight,
@@ -22,7 +6,6 @@ import {
   ChevronDown,
   MessageCircle,
   Mail,
-  MessageCircle as MessageCircle2,
   ClipboardList,
   Wallet,
   Code2,
@@ -31,32 +14,8 @@ import {
 } from "lucide-react";
 import { services, SERVICE_CATEGORIES } from "../data/services";
 import ServiceIcon from "../components/ServiceIcon";
-
-// ─── SEO Hook ──────────────────────────────────────────────────────────────────
-function useSEO({ title, description, ogTitle, ogDescription }) {
-  useEffect(() => {
-    document.title = title;
-
-    const setMeta = (name, content, attr = "name") => {
-      let el = document.querySelector(`meta[${attr}="${name}"]`);
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-
-    setMeta("description", description);
-    setMeta("og:title", ogTitle ?? title, "property");
-    setMeta("og:description", ogDescription ?? description, "property");
-    setMeta("og:type", "website", "property");
-
-    return () => {
-      document.title = "GaruDev — Jasa Pembuatan Website & Aplikasi";
-    };
-  }, [title, description, ogTitle, ogDescription]);
-}
+import { useSEO, useJsonLd } from "../utils/useSEO";
+import { STATIC_ROUTES_SEO, LAYANAN_FAQS } from "../utils/seoConfig";
 
 // ─── Process Steps (sama seperti ProcessSection, disederhanakan) ───────────────
 const workflowSteps = [
@@ -68,29 +27,7 @@ const workflowSteps = [
   { number: "06", title: "Penyerahan", description: "Source code, aset, dan dokumentasi diserahkan kepada Anda.", Icon: PackageCheck },
 ];
 
-// ─── Global FAQ ────────────────────────────────────────────────────────────────
-const globalFaqs = [
-  {
-    question: "Berapa lama waktu pengerjaan rata-rata?",
-    answer:
-      "Tergantung layanan dan kompleksitas. Website company profile: 3–6 minggu; aplikasi mobile: 8–16 minggu; sistem informasi bisnis: 10–20 minggu. Estimasi lebih akurat diberikan setelah discovery.",
-  },
-  {
-    question: "Bagaimana alur pembayaran?",
-    answer:
-      "DP di awal (biasanya 50%), sisanya dilunasi setelah hasil final disetujui sebelum serah terima. Tidak ada biaya tersembunyi.",
-  },
-  {
-    question: "Apakah source code menjadi milik saya?",
-    answer:
-      "Ya. Seluruh source code diserahkan kepada klien setelah pelunasan, sesuai perjanjian kerja sama.",
-  },
-  {
-    question: "Apakah ada garansi setelah proyek selesai?",
-    answer:
-      "Ada garansi bug fixing 30 hari setelah serah terima tanpa biaya tambahan, selama bug tersebut berasal dari pengerjaan kami.",
-  },
-];
+const globalFaqs = LAYANAN_FAQS;
 
 // ─── Sub-komponen FAQ ──────────────────────────────────────────────────────────
 function FAQItem({ question, answer, index }) {
@@ -192,15 +129,12 @@ function ServiceCard({ service }) {
 // ─── Halaman utama ─────────────────────────────────────────────────────────────
 export default function LayananPage() {
   const [activeCategory, setActiveCategory] = useState("semua");
+  const seo = STATIC_ROUTES_SEO["/layanan"];
 
-  useSEO({
-    title: "Layanan GaruDev — Website, Aplikasi Mobile & Sistem Informasi",
-    description:
-      "GaruDev menyediakan jasa pembuatan website, aplikasi web & mobile, sistem informasi bisnis, desain UI/UX, serta SEO & maintenance. Lihat semua layanan dan detail teknisnya.",
-    ogTitle: "Layanan GaruDev — Website, Aplikasi & Sistem Informasi",
-    ogDescription:
-      "Jasa pembuatan website, aplikasi mobile, dan sistem informasi bisnis berbasis teknologi modern. Lihat detail layanan, tech stack, dan alur pengerjaan kami.",
-  });
+  useSEO(seo);
+  useJsonLd("ld-layanan-page", seo.jsonLd[0].data);
+  useJsonLd("ld-layanan-breadcrumb", seo.jsonLd[1].data);
+  useJsonLd("ld-layanan-faq", seo.jsonLd[2].data);
 
   const showFilter = services.length > 6;
 
@@ -223,6 +157,21 @@ export default function LayananPage() {
         />
 
         <div className="relative z-10 mx-auto max-w-7xl">
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" className="mb-6">
+            <ol className="flex items-center gap-2 text-xs text-gray-400">
+              <li>
+                <Link to="/" className="transition-colors hover:text-blue-600">
+                  Beranda
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li className="text-[#171717]" aria-current="page">
+                Layanan
+              </li>
+            </ol>
+          </nav>
+
           <span className="text-xs font-semibold tracking-wide text-blue-600">
             APA YANG KAMI KERJAKAN
           </span>
@@ -367,9 +316,8 @@ export default function LayananPage() {
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            {/* TODO: Ganti href dengan nomor WhatsApp aktual */}
             <a
-              href="https://wa.me/6281234567890"
+              href="https://wa.me/6283822757990?text=Hai%20Garudev%2C%20aku%20mau%20konsultasi%20soal%20website%20nih"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex min-h-[56px] w-full items-center justify-center gap-3 rounded-full bg-white px-8 text-sm font-bold text-blue-600 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:w-auto"

@@ -25,6 +25,9 @@ export const services = [
     featured: true,
     iconName: "Globe", // lucide-react icon name
     title: "Pembuatan Website",
+    seoTitle: "Jasa Pembuatan Website Custom untuk UMKM — GaruDev",
+    seoDescription:
+      "Jasa pembuatan website custom untuk UMKM: company profile, landing page, hingga toko online responsif dengan struktur SEO on-page dan performa optimal.",
     shortDescription:
       "Website company profile, landing page, atau toko online yang cepat, responsif, dan siap ranking di Google.",
     features: [
@@ -75,6 +78,9 @@ export const services = [
     featured: true,
     iconName: "LayoutDashboard",
     title: "Aplikasi Web (SPA/PWA)",
+    seoTitle: "Aplikasi Web Custom (SPA/PWA) untuk Bisnis — GaruDev",
+    seoDescription:
+      "Pengembangan aplikasi web custom (SPA/PWA) untuk dashboard, portal klien, dan sistem internal perusahaan dengan autentikasi aman dan akses offline.",
     shortDescription:
       "Dashboard, portal klien, atau alat internal berbasis web yang bisa berjalan offline dan terasa seperti aplikasi native.",
     features: [
@@ -118,6 +124,9 @@ export const services = [
     featured: true,
     iconName: "Smartphone",
     title: "Aplikasi Mobile",
+    seoTitle: "Jasa Pembuatan Aplikasi Mobile Android & iOS — GaruDev",
+    seoDescription:
+      "Jasa pembuatan aplikasi mobile Android dan iOS dari satu codebase menggunakan React Native atau Flutter, termasuk pendampingan rilis ke Play Store.",
     shortDescription:
       "Aplikasi Android & iOS dari satu codebase menggunakan React Native / Flutter, termasuk submit ke Play Store dan App Store.",
     features: [
@@ -158,14 +167,17 @@ export const services = [
   },
 
   // ─────────────────────────────────────────────
-  // 4. Sistem Informasi
+  // 4. Sistem Informasi Bisnis
   // ─────────────────────────────────────────────
   {
-    slug: "sistem-informasi",
+    slug: "sistem-informasi-bisnis",
     category: "sistem",
     featured: false,
     iconName: "Database",
     title: "Sistem Informasi Bisnis",
+    seoTitle: "Sistem Informasi Bisnis untuk UMKM & Usaha — GaruDev",
+    seoDescription:
+      "Pembuatan sistem informasi bisnis untuk UMKM dan perusahaan: manajemen stok, HRIS, hingga alur persetujuan internal sesuai SOP operasional bisnis Anda.",
     shortDescription:
       "Sistem manajemen internal seperti ERP sederhana, HRIS, atau sistem inventory yang disesuaikan dengan proses bisnis Anda.",
     features: [
@@ -215,6 +227,9 @@ export const services = [
     featured: false,
     iconName: "Layers",
     title: "UI/UX Design",
+    seoTitle: "Jasa UI/UX Design Produk Digital & Prototype — GaruDev",
+    seoDescription:
+      "Jasa UI/UX design dari wireframe hingga prototype interaktif dan design system di Figma, terstruktur rapi dan siap diimplementasikan oleh tim developer.",
     shortDescription:
       "Desain antarmuka dan pengalaman pengguna dari wireframe hingga prototype interaktif di Figma, siap dioper ke developer.",
     features: [
@@ -259,6 +274,9 @@ export const services = [
     featured: false,
     iconName: "TrendingUp",
     title: "SEO & Maintenance Website",
+    seoTitle: "Jasa SEO Dasar dan Maintenance Website — GaruDev Studio",
+    seoDescription:
+      "Jasa SEO dasar dan maintenance website: audit teknis, perbaikan Core Web Vitals, pembaruan rutin, backup berkala, serta monitoring keamanan dan uptime.",
     shortDescription:
       "Optimasi teknis SEO, perbaikan performa, dan pemeliharaan rutin agar website tetap cepat dan terindeks dengan baik.",
     features: [

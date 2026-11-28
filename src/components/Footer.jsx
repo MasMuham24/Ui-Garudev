@@ -1,12 +1,14 @@
+import { Link } from "react-router-dom";
+import { services } from "../data/services";
+
 const menuLinks = [
-  { label: "Beranda", href: "#home" },
-  { label: "Tentang", href: "#about" },
-  { label: "Layanan", href: "#services" },
-  { label: "Harga", href: "#pricing" },
-  { label: "Portofolio", href: "#projects" },
-  { label: "Blog", href: "#blog" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Kontak", href: "#contact" },
+  { label: "Beranda", to: "/" },
+  { label: "Tentang", href: "/#about" },
+  { label: "Semua Layanan", to: "/layanan" },
+  { label: "Portofolio", to: "/portfolio" },
+  { label: "Jasa Website Demak", to: "/jasa-website-demak" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Kontak", href: "/#contact" },
 ];
 
 const socialLinks = [
@@ -59,13 +61,13 @@ export default function Footer() {
   return (
     <footer className="bg-[#0B1938] px-5 pt-16 text-white md:px-10 md:pt-20 lg:px-20">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 gap-12 pb-14 md:grid-cols-2 lg:grid-cols-[1.4fr_0.75fr_1fr] lg:gap-16">
+        <div className="grid grid-cols-1 gap-12 pb-14 md:grid-cols-2 lg:grid-cols-[1.2fr_0.75fr_0.95fr_1fr] lg:gap-12">
           <div>
-            <a href="#home" className="mb-7 inline-flex items-center gap-3">
+            <Link to="/" className="mb-7 inline-flex items-center gap-3">
               <span className="text-xl font-extrabold tracking-tight">
                 Garu<span className="text-sky-400">dev</span>
               </span>
-            </a>
+            </Link>
 
             <p className="max-w-md text-sm leading-7 text-slate-300 md:text-base">
               Jasa website, aplikasi, dan sistem informasi untuk bisnis di
@@ -79,12 +81,37 @@ export default function Footer() {
             <ul className="space-y-4">
               {menuLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
+                  {link.to ? (
+                    <Link
+                      to={link.to}
+                      className="text-sm text-slate-300 transition-colors hover:text-sky-400"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-sm text-slate-300 transition-colors hover:text-sky-400"
+                    >
+                      {link.label}
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="mb-7 text-sm font-bold tracking-wide">LAYANAN</h3>
+            <ul className="space-y-4">
+              {services.map((service) => (
+                <li key={service.slug}>
+                  <Link
+                    to={`/layanan/${service.slug}`}
                     className="text-sm text-slate-300 transition-colors hover:text-sky-400"
                   >
-                    {link.label}
-                  </a>
+                    {service.title}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -103,11 +130,13 @@ export default function Footer() {
               </a>
 
               <div className="flex items-center gap-3">
-                Semarang, Indonesia
+                Demak, Jawa Tengah, Indonesia
               </div>
 
               <a
-                href="#"
+                href="https://wa.me/6283822757990?text=Hai%20Garudev%2C%20aku%20mau%20konsultasi%20soal%20website%20nih"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-3 transition-colors hover:text-sky-400"
               >
                 <span>◉</span>

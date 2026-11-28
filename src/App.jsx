@@ -5,6 +5,8 @@ import Hero from "./sections/Hero";
 import LazySection from "./components/LazySection";
 import SectionLoader from "./components/SectionLoader";
 import ScrollToTop from "./components/ScrollToTop";
+import { useSEO, useJsonLd } from "./utils/useSEO";
+import { STATIC_ROUTES_SEO } from "./utils/seoConfig";
 
 const WhyChooseUs = lazy(() => import("./sections/WhyChooseUs"));
 const About = lazy(() => import("./pages/About"));
@@ -18,8 +20,15 @@ const Portfolio = lazy(() => import("./pages/Portfolio"));
 const Footer = lazy(() => import("./components/Footer"));
 const LayananPage = lazy(() => import("./pages/LayananPage"));
 const LayananDetailPage = lazy(() => import("./pages/LayananDetailPage"));
+const JasaWebsiteDemakPage = lazy(() => import("./pages/JasaWebsiteDemakPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 function HomePage() {
+  const seo = STATIC_ROUTES_SEO["/"];
+  useSEO(seo);
+  useJsonLd("ld-organization", seo.jsonLd[0].data);
+  useJsonLd("ld-home-faq", seo.jsonLd[1].data);
+
   return (
     <main className="min-h-screen bg-white text-[#171717]">
       <Hero />
@@ -112,6 +121,26 @@ function App() {
           element={
             <Suspense fallback={<SectionLoader />}>
               <LayananDetailPage />
+            </Suspense>
+          }
+        />
+
+        {/* Route baru: halaman lokal Demak */}
+        <Route
+          path="/jasa-website-demak"
+          element={
+            <Suspense fallback={<SectionLoader />}>
+              <JasaWebsiteDemakPage />
+            </Suspense>
+          }
+        />
+
+        {/* 404 */}
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<SectionLoader />}>
+              <NotFoundPage />
             </Suspense>
           }
         />

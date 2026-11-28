@@ -10,7 +10,8 @@ export default function LazySection({
   minHeight = "200px",
   ...props
 }) {
-  const [isVisible, setIsVisible] = useState(false);
+  const isServer = typeof window === "undefined";
+  const [isVisible, setIsVisible] = useState(isServer);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -40,10 +41,10 @@ export default function LazySection({
   return (
     <div
       ref={sectionRef}
-      className={`transition-all duration-700 ease-out will-change-[opacity,transform] ${
+      className={`transition-all duration-700 ease-out will-change-[opacity,transform] motion-reduce:transition-none ${
         isVisible
           ? "opacity-100 translate-y-0 filter-none"
-          : "opacity-0 translate-y-8 blur-[1px]"
+          : "motion-safe:opacity-0 motion-safe:translate-y-8 motion-safe:blur-[1px]"
       } ${className}`.trim()}
       style={{
         transitionDelay: `${delay}ms`,
